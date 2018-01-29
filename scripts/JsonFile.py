@@ -1,3 +1,5 @@
+import json
+
 class JsonFile:
     '''Compare a json object againt the specified schema.
     '''
@@ -49,6 +51,10 @@ class JsonFile:
     def process(self):
         self.check()
         self.raw
+
+    def dumptofile(self,outputpath):
+        with open(outputpath, 'w') as output:
+            json.dump(self.raw,output)
 
     def read_file(self, inputpath):
         read_json = json.load(open(inputpath,'r'))
